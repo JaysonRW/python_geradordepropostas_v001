@@ -161,12 +161,14 @@
         <tbody>
             {% set ns = namespace(grand_total=0) %}
             {% for service in services %}
-            {% set line_total = service.hours * service.rate %}
+            {% set hours = service.hours if service.hours is not none else 0 %}
+            {% set rate = service.rate if service.rate is not none else 0 %}
+            {% set line_total = hours * rate %}
             {% set ns.grand_total = ns.grand_total + line_total %}
             <tr>
                 <td>{{ service.name }}</td>
-                <td>{{ service.hours }}</td>
-                <td>R$ {{ "%.2f"|format(service.rate)|replace('.', ',') }}</td>
+                <td>{{ hours }}</td>
+                <td>R$ {{ "%.2f"|format(rate)|replace('.', ',') }}</td>
                 <td>R$ {{ "%.2f"|format(line_total)|replace('.', ',') }}</td>
             </tr>
             {% endfor %}
