@@ -1,0 +1,40 @@
+{
+    "contract_number": "2026/001",
+    "date_signed": "05 de Janeiro de 2026",
+    "contractor": {
+        "name": "Trae Solutions Tech LTDA",
+        "cnpj": "12.345.678/0001-90",
+        "address": "Av. Paulista, 1000 - Bela Vista, São Paulo - SP",
+        "representative": "Carlos Trae"
+    },
+    "contracted": {
+        "name": "Mega Corp S.A.",
+        "cnpj": "98.765.432/0001-10",
+        "address": "Rua Funchal, 200 - Vila Olímpia, São Paulo - SP",
+        "representative": "Maria Souza"
+    },
+    "object": "Prestação de serviços de desenvolvimento de software e consultoria técnica para automação de documentos.",
+    "value": "R$ 10.050,00 (Dez mil e cinquenta reais)",
+    "clauses": [
+        {
+            "title": "1. Do Objeto",
+            "text": "O presente contrato tem como objeto a prestação de serviços de desenvolvimento de software conforme descrito na Proposta Comercial anexa."
+        },
+        {
+            "title": "2. Do Prazo",
+            "text": "O prazo para execução dos serviços é de 4 (quatro) semanas, iniciando-se na data de assinatura deste contrato."
+        },
+        {
+            "title": "3. Do Pagamento",
+            "text": "O pagamento será efetuado em duas parcelas iguais de 50%, sendo a primeira no aceite e a segunda na entrega final."
+        },
+        {
+            "title": "4. Da Confidencialidade",
+            "text": "Ambas as partes comprometem-se a manter o sigilo sobre quaisquer informações confidenciais trocadas durante a vigência deste contrato."
+        },
+        {
+            "title": "5. Do Foro",
+            "text": "Fica eleito o foro da Comarca de São Paulo/SP para dirimir quaisquer dúvidas oriundas deste contrato."
+        }
+    ]
+}

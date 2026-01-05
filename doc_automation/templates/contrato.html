@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Contrato de Prestação de Serviços</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2.5cm;
+            @bottom-center {
+                content: "Página " counter(page) " de " counter(pages);
+                font-family: 'Times New Roman', serif;
+                font-size: 10pt;
+            }
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            font-size: 12pt;
+            line-height: 1.5;
+            text-align: justify;
+            color: #000;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 16pt;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            border-bottom: 1px solid black;
+            padding-bottom: 10px;
+        }
+
+        .preamble {
+            margin-bottom: 30px;
+        }
+
+        .party-title {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .clause-title {
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .clause-text {
+            margin-bottom: 15px;
+            text-indent: 1.5cm;
+        }
+
+        .signatures {
+            margin-top: 80px;
+            display: flex;
+            justify-content: space-between;
+            page-break-inside: avoid;
+        }
+
+        .signature-block {
+            width: 45%;
+            text-align: center;
+            border-top: 1px solid black;
+            padding-top: 10px;
+            font-size: 10pt;
+        }
+
+        .footer-info {
+            font-size: 8pt;
+            text-align: center;
+            margin-top: 50px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Contrato de Prestação de Serviços nº {{ contract_number }}</h1>
+
+    <div class="preamble">
+        <p>
+            Pelo presente instrumento particular, de um lado:
+        </p>
+        <p>
+            <span class="party-title">CONTRATADA:</span> <strong>{{ contractor.name }}</strong>, pessoa jurídica de direito privado, inscrita no CNPJ sob o nº {{ contractor.cnpj }}, com sede em {{ contractor.address }}, neste ato representada por {{ contractor.representative }}.
+        </p>
+        <p>
+            E de outro lado:
+        </p>
+        <p>
+            <span class="party-title">CONTRATANTE:</span> <strong>{{ contracted.name }}</strong>, pessoa jurídica de direito privado, inscrita no CNPJ sob o nº {{ contracted.cnpj }}, com sede em {{ contracted.address }}, neste ato representada por {{ contracted.representative }}.
+        </p>
+        <p>
+            Têm entre si justo e contratado o seguinte:
+        </p>
+    </div>
+
+    {% for clause in clauses %}
+    <div class="clause">
+        <div class="clause-title">{{ clause.title }}</div>
+        <div class="clause-text">
+            {{ clause.text }}
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="clause">
+        <div class="clause-title">Valor Global</div>
+        <div class="clause-text">
+            Pela prestação dos serviços objeto deste contrato, a CONTRATANTE pagará à CONTRATADA o valor total de <strong>{{ value }}</strong>.
+        </div>
+    </div>
+
+    <p style="margin-top: 40px; text-align: center;">
+        São Paulo, {{ date_signed }}.
+    </p>
+
+    <div class="signatures">
+        <div class="signature-block">
+            <strong>{{ contractor.name }}</strong><br>
+            {{ contractor.representative }}<br>
+            (Contratada)
+        </div>
+        <div class="signature-block">
+            <strong>{{ contracted.name }}</strong><br>
+            {{ contracted.representative }}<br>
+            (Contratante)
+        </div>
+    </div>
+
+    <div class="footer-info">
+        Este documento foi gerado automaticamente pelo Sistema de Automação Doc v1.0
+    </div>
+
+</body>
+</html>
