@@ -74,12 +74,17 @@ def render_proposal_form():
         
         # Dados iniciais para a tabela
         default_services = [
-            {"name": "Consultoria", "hours": 10, "rate": 150.00},
-            {"name": "Desenvolvimento", "hours": 40, "rate": 150.00},
+            {"name": "Consultoria", "hours": 10.0, "rate": 150.00},
+            {"name": "Desenvolvimento", "hours": 40.0, "rate": 150.00},
         ]
         
         df_services = pd.DataFrame(default_services)
-        edited_df_services = st.data_editor(df_services, num_rows="dynamic")
+        column_config = {
+            "name": st.column_config.TextColumn("Serviço", required=True),
+            "hours": st.column_config.NumberColumn("Horas", min_value=0.0, step=0.5, required=True),
+            "rate": st.column_config.NumberColumn("Valor Hora", min_value=0.0, step=10.0, format="R$ %.2f", required=True)
+        }
+        edited_df_services = st.data_editor(df_services, num_rows="dynamic", column_config=column_config)
 
     with tab4:
         st.subheader("Cronograma")
